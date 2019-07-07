@@ -1,0 +1,456 @@
+<Gerenciador>
+	Login:
+		id: login
+		name: 'login'
+	Menu:
+		id: menu
+		name: 'menu'
+	Perguntas:
+		id: perguntas
+		name: 'perguntas'
+	Errou:
+		name: 'errou'
+	Acertou:
+		name: 'acertou'
+	Terminou:
+		id: terminou
+		name: 'terminou'
+	Top10:
+		id: top10
+		name: 'top10'
+	Creditos:
+		id: creditos
+		name: 'creditos'
+	Bugou:
+		name: 'bugou'
+<Bugou>
+	BoxLayout:
+		orientation: 'vertical'
+		Label:
+			size_hint_y: 0.7
+			canvas.before:
+				Color:
+					rgba: 1, 1 ,1, 1
+				Rectangle:
+					size: self.size
+					pos: self.pos
+					source: 'Images/oops.png'
+		Button:
+			size_hint_y: 0.3
+			text: 'SAIR'
+			background_normal: 'Images/on2.png'
+			background_down: 'Images/off2.png'
+			on_release: app.stop()
+<Creditos>
+	BoxLayout:
+		orientation: 'vertical'
+		canvas.before:
+			Color:
+				rgba: 153, 0, 0, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos 
+		Credito:
+			text: 'Orientadora: Dra. Márcia Fernandes Rosa Neu' 
+		Credito:
+			text: 'Logo e imagens: Daniel Vitor Anselmo Brasil'
+		Credito:
+			text: 'Desenvolvimento: Thiago Venâncio do Nascimento'
+		Credito:
+			text: 'Desenvolvido totalmente em Python, utilizando o framework Kivy'
+		Credito:
+			text: 'Projeto realizado pelos alunos do 3º ano do ensino médio da E.E.B Profº Gracinda Augusta Machado'
+		Credito:
+			text: '[color=#0000FF][ref=http://desenvolvedor.tech/gamquiz]Site para divulgação e futuros updates[/ref][/color]'
+			on_ref_press:
+				import webbrowser
+				webbrowser.open(args[1])
+			markup: True 
+		Button:
+			text: 'VOLTAR'
+			background_normal: 'Images/on2.png'
+			background_down: 'Images/off2.png'
+			on_release: root.voltar()
+<Credito@Label>
+	text_size: self.size
+	halign: 'center'
+	valign: 'middle'
+	canvas.before:
+		Color:
+			rgba: 153, 0, 0, 1
+		Rectangle:
+			pos: self.pos
+			size: self.size	
+<NormalOnly>
+	multiline: False
+
+<Login>
+	BoxLayout:
+		canvas.before:
+			Color:
+				rgba: 1, 1, 1, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				source: 'Images/login_fundo.png'
+		orientation: 'vertical'
+		spacing: 100
+		ActionBar:
+			background_image: 'Images/white_pure.jpg'
+			background_color: 0.16, 0.38, 0.87, 1
+			size_hint_y: 0.15
+			ActionView:
+				ActionPrevious:
+					app_icon: 'Images/icon.png'
+					on_release: app.root.current = 'creditos'
+				ActionButton:
+					color: 0, 0, 0, 1
+					text: 'CRÉDITOS'
+					on_release: app.root.current = 'creditos'
+		Label:
+			color: 1, 0, 0, 1
+			id: aviso
+			text: ''
+			font_size: '30sp'
+			font_name: 'Roboto-BoldItalic'
+			text_size: self.size
+			halign: 'center'
+			size_hint_y: 0.45
+		BoxLayout:
+			size_hint_y: 0.15
+			Label:
+				size_hint_x: 0.4
+				canvas.before:
+					Color:
+						rgba: 1, 1, 1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source: 'Images/usuario.png'
+			NormalOnly:
+				id: username
+				#multiline: False
+		BoxLayout:
+			size_hint_y: 0.15
+			Label:
+				size_hint_x: 0.4
+				canvas.before:
+					Color:
+						rgba: 1, 1, 1, 1
+					Rectangle:
+						pos: self.pos
+						size: self.size
+						source: 'Images/password.png'
+			NormalOnly:
+				id: senha
+				password: True
+				#multiline: False
+		BoxLayout:
+			padding: 5
+			spacing: 5
+			size_hint_y: 0.4
+			Button:
+				color: 0, 0, 0, 1
+				text: 'REGISTRAR'
+				background_normal: 'Images/on3.png'
+				background_down: 'Images/off3.png'
+				on_release: root.registrando()
+			Button:
+				color: 0, 0, 0, 1
+				text: 'LOGAR'
+				background_normal: 'Images/on3.png'
+				background_down: 'Images/off3.png'
+				on_release: root.proximo()
+
+<Top10>
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 1
+		Label:
+			size_hint_y: None
+			height: 25
+			text: 'RANKING'
+			canvas.before:
+				Color:
+					rgba: 0, 0, 255, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+		Colocacao:
+			id: top1
+			posicao: '1º'
+		Colocacao:
+			id: top2
+			posicao: '2º'
+		Colocacao:
+			id: top3
+			posicao: '3º'
+		Colocacao:
+			id: top4
+			posicao: '4º'
+		Colocacao:
+			id: top5
+			posicao: '5º'
+		Colocacao:
+			id: top6
+			posicao: '6º'
+		Colocacao:
+			id: top7
+			posicao: '7º'
+		Colocacao:
+			id: top8
+			posicao: '8º'
+		Colocacao:
+			id: top9
+			posicao: '9º'
+		Colocacao:
+			id: top10
+			posicao: '10º'
+		Button:
+			text: 'VOLTAR'
+			background_normal: 'Images/on2.png'
+			background_down: 'Images/off2.png'
+			on_release: app.root.current = 'terminou'
+		
+<Colocacao>
+	spacing: 5
+	Label:
+		text: root.posicao
+		canvas.before:
+			Color:
+				rgba: 255, 0, 0, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+		size_hint_x: 0.1
+	Label:
+		text: root.jogador
+		canvas.before:
+			Color:
+				rgba: 255, 0, 0, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		size_hint_x: 0.5
+	Label:
+		text: root.pontuacao
+		canvas.before:
+			Color:
+				rgba: 255, 0, 0, 1
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		size_hint_x: 0.3
+
+<Menu>
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 5
+		padding: 5
+		canvas.before:
+			Color:
+				rgba: 0, 0, 1, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			color: 0, 0, 0, 1
+			id: texto
+			text_size: self.size
+			halign: 'center'
+			valign: 'middle'
+			size_hint_y: 0.2
+			font_name: 'Roboto-BoldItalic'
+			font_size: '20sp'
+			text: '[font=Roboto-BoldItalic]PRONTO PARA INICIAR?[/font]'
+			markup: True
+		Image:
+			id: imagem
+			size_hint_y: 0.2
+			#pos: 250, 250
+			source: 'Images/gamquiz.png'
+			allow_stretch: True
+		Botao:
+			id: b1
+			color: 0, 0, 0, 1
+			text: "GERAL"
+			on_release: root.proximo(1)
+		Botao:
+			id: b2
+			color: 0, 0, 0 ,1
+			text: "MATEMÁTICA"
+			on_release: root.proximo(0)
+
+
+<Perguntas>
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 5
+		padding: 5
+		canvas.before:
+			Color:
+				rgba: 0, 0, 1, 1
+			Rectangle:
+				size: self.size
+				pos: self.pos
+		Label:
+			color: 0, 0, 0, 1
+			id: texto
+			text_size: self.size
+			halign: 'center'
+			valign: 'middle'
+			size_hint_y: 0.2
+			font_name: 'Roboto-BoldItalic'
+			font_size: '20sp'
+			text: '[font=Roboto-BoldItalic]PRONTO PARA INICIAR?[/font]'
+			markup: True
+		Image:
+			id: imagem
+			size_hint_y: 0.2
+			#pos: 250, 250
+			source: 'Images/gamquiz.png'
+			allow_stretch: True
+		Botao:
+			id: b1
+			color: 0, 0, 0, 1
+			on_release: root.errou_acertou('A')
+		Botao:
+			id: b2
+			color: 0, 0, 0 ,1
+			on_release: root.errou_acertou('B')
+		Botao:
+			id: b3
+			color: 0, 0, 0, 1
+			on_release: root.errou_acertou('C')
+		Botao:
+			id: b4
+			color: 0, 0, 0, 1
+			on_release: root.errou_acertou('D')
+
+	
+<Botao@Button>:
+	size_hint_y: 0.1
+	#background_color: 255, 0, 0, 1
+	background_normal: 'Images/on3.png'
+	background_down: 'Images/off3.png'
+	halign: 'center'
+	valign: 'middle'
+	text_size: self.size
+	text: 'CLIQUE PARA INICIAR O QUIZ'
+
+<Terminou>:
+	BoxLayout:
+		orientation: 'vertical'
+		spacing: 5
+		ActionBar:
+			icon: 'Images/icon.png'
+			size_hint_y: 0.05
+			background_image: 'Images/white_pure.jpg'
+			background_color: 0, 0, 1, 1
+			ActionView:
+				ActionPrevious:
+					title: ''
+					app_icon: 'Images/icon.png'
+					on_release: app.root.current = 'menu'
+				ActionButton:
+					id: somzinho
+					icon: 'Images/som.png'
+					on_release: root.desligaMusica()
+				ActionButton:
+					text: 'CRÉDITOS'
+					on_release: app.root.current = 'creditos'
+		Button:
+			size_hint_y: 0.2
+			background_normal: 'Images/finish.png'
+		Label:
+			id: resultado
+			size_hint_y: 0.1
+			canvas.before:
+				Color:
+					rgba: 255, 0, 0, 1
+				Rectangle:
+					pos: self.pos
+					size: self.size
+		
+		BoxLayout:
+			size_hint_y: 0.1
+			spacing: 5
+			Label:
+				size_hint_x: 0.2
+				text: 'TODOS'
+				canvas.before:
+					Color:
+						rgba: (255, 0, 0, 1)
+					Rectangle:
+						pos: self.pos
+						size: self.size
+			Colocacao:
+				id: rankjogador
+		BoxLayout:
+			size_hint_y: 0.1
+			spacing: 5
+			Label:
+				size_hint_x: 0.2
+				text: 'HOJE'
+				canvas.before:
+					Color:
+						rgba: (255, 0, 0, 1)
+					Rectangle:
+						pos: self.pos
+						size: self.size
+			Colocacao:
+				id: rankjogador2
+		BoxLayout:
+			size_hint_y: 0.1
+			spacing: 3
+			Button:
+				color: 0, 0, 0, 1
+				#background_color: 0, 255, 0, 1
+				background_normal: 'Images/on2.png'
+				background_down: 'Images/off2.png'
+				text: 'TOP10'
+				on_release: root.gerarTop10(1)
+
+			Button:
+				color: 0, 0, 0, 1
+				background_normal: 'Images/on2.png'
+				background_down: 'Images/off2.png'
+				text: 'TOP10 HOJE'
+				on_release: root.gerarTop10(2)
+		Button:
+			size_hint_y: 0.1
+			color: 0, 0, 0, 1
+			background_normal: 'Images/on2.png'
+			background_down: 'Images/off2.png'
+			text: 'REINICIAR QUIZ'
+			on_release: root.restart()
+
+<Errou>
+	BoxLayout:
+		orientation: 'vertical'
+		Image:
+			source: 'Images/errou.png'
+			allow_stretch: True
+		Button:
+			size_hint_y: 0.3
+			text: 'Retornar ao quiz'
+			#background_color: 0, 0, 255, 1
+			background_normal: 'Images/on2.png'
+			background_down: 'Images/off2.png'
+			on_release: app.root.current = 'perguntas'
+
+<Acertou>
+	BoxLayout:
+		orientation: 'vertical'
+		Image:
+			source: 'Images/acertou.png'
+			allow_stretch: True
+		Button:
+			size_hint_y: 0.3
+			text: 'Retornar ao quiz'
+			#background_color: 0, 0, 255, 1
+			background_normal: 'Images/on2.png'
+			background_down: 'Images/off2.png'
+			on_release: app.root.current = 'perguntas'
